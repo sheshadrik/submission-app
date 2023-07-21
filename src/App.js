@@ -1,24 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import BasicDetails from './Components/BasicDetails';
+import ContactDetails from './Components/ContactDetails';
+import { useState } from 'react';
+import Home from './Components/Home';
+import { Route, Routes } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import ReviewDetails from './Components/ReviewDetails';
 
-function App() {
-  return (
+function App() {  
+  return (<BrowserRouter>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* {pageNo === 1?
+      <BasicDetails></BasicDetails> :
+      <ContactDetails></ContactDetails> }     
+      */}
+      <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/apply' element={<BasicDetails />} />
+            <Route path='/contact' element={<ContactDetails />} />
+            <Route path='/review' element={<ReviewDetails />} />             
+      </Routes>       
       </header>
+
     </div>
+    </BrowserRouter>
   );
 }
 
