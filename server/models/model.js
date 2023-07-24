@@ -31,4 +31,4 @@ const dataSchema = new mongoose.Schema({
     },
 } );
 
-module.exports = mongoose.model('LoanApplication', dataSchema)
+let LoanApplication = module.exports = mongoose.model('LoanApplication', dataSchema)

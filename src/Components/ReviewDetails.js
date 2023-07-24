@@ -1,17 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { applyLoan, getUsers } from "../services/ApplyService";
+//import { applyLoan, getUsers } from "../services/ApplyService";
+import { addLoan } from "../slices/loanApplicationSlice";
 
 function ReviewDetails() {
     const dispatch = useDispatch();
     const loanDetails = useSelector( state => state);
-    const {firstName,lastName,dob,last4ssn} = useSelector( state => state.basicDetails);
-    const {address,phone,email} = useSelector(state => state.contactDetails);
+    const {firstName,lastName,dob,last4ssn} = useSelector( state => state.loans?.basicDetails);
+    const {address,phone,email} = useSelector(state => state.loans?.contactDetails);
     const handleSubmit = (event) => {
         event.preventDefault();
-        applyLoan(loanDetails).then((res) => {
-            console.log(res);
-        });//API call
+        // applyLoan(loanDetails).then((res) => {
+        //     console.log(res);
+        // });//API call
+        dispatch(addLoan(loanDetails));
     };
     return <div>
         <form onSubmit={handleSubmit}>
