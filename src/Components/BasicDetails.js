@@ -33,6 +33,7 @@ function BasicDetails() {
                 <div>
                     First Name:
                     <input
+                        placeholder="First Name"
                         type="text"
                         name="firstName"
                         value={formData.firstName}
@@ -43,6 +44,7 @@ function BasicDetails() {
                 <div>
                     Last Name:
                     <input
+                    placeholder="Last Name"
                         type="text"
                         name="lastName"
                         value={formData.lastName}
@@ -53,6 +55,7 @@ function BasicDetails() {
                 <div>
                     Date of Birth:
                     <input
+                    placeholder="mm/dd/yyyy"
                         type="text"
                         name="dob"
                         value={formData.dob}
@@ -70,7 +73,7 @@ function BasicDetails() {
                     />
                 </div>
                 <br />
-                <button type="submit" disabled={!valid}>Continue</button>
+                <button type="submit" name="continue" disabled={!valid}>Continue</button>
             </form>
         </div>
     )

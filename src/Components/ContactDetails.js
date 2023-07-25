@@ -62,8 +62,8 @@ function ContactDetails() {
             />
             </div>
             <br/>                        
-            <button type="button" onClick={navigateToPrevious}>Previous</button>
-            <button type="submit" disabled={isSubmitDisabled}>Continue</button>
+            <button type="button" name="previous" onClick={navigateToPrevious}>Previous</button>
+            <button type="submit" name="continue" disabled={isSubmitDisabled}>Continue</button>
         </form>
         </div>
     )

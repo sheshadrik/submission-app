@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { applyLoan, getUsers } from "../services/ApplyService";
 
-function ReviewDetails() {
-    const dispatch = useDispatch();
+function ReviewDetails() {    
+    const navigate = useNavigate();
     const loanDetails = useSelector( state => state);
     const {firstName,lastName,dob,last4ssn} = useSelector( state => state.basicDetails);
     const {address,phone,email} = useSelector(state => state.contactDetails);
@@ -11,6 +11,7 @@ function ReviewDetails() {
         event.preventDefault();
         applyLoan(loanDetails).then((res) => {
             console.log(res);
+            navigate('/');
         });//API call
     };
     return <div>
@@ -29,7 +30,7 @@ function ReviewDetails() {
         <tr><td>Phone</td><td>{phone}</td></tr>
         <tr><td>Address</td><td>{address}</td></tr>
         </table>
-        <button type="submit">Apply Loan</button>
+        <button type="submit" name="apply">Apply Loan</button>
         </form>
         </div>
 }

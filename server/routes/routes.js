@@ -28,15 +28,6 @@ const Model = require('../models/model');
         email: contactDetails?.email,
         
     });
-    // Get a list of 50 posts
-router.get("/loanApplication", async (req, res) => {
-    let collection = await db.collection("loan");
-    let results = await collection.find({})
-      .limit(50)
-      .toArray();
-  
-    res.send(results).status(200);
-  });
 
     try {
         const dataToSave = await data.save();
@@ -46,3 +37,13 @@ router.get("/loanApplication", async (req, res) => {
         res.status(400).json({message: error.message})
     }
 })
+
+    // Get a list of 50 posts
+    router.get("/loanApplication", async (req, res) => {
+      let collection = await db.collection("loan");
+      let results = await collection.find({})
+        .limit(50)
+        .toArray();
+    
+      res.send(results).status(200);
+    });
