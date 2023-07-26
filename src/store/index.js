@@ -10,6 +10,7 @@ import thunkMiddleware from 'redux-thunk';
 
   const reducer = combineReducers({
     loan: loanReducer,
+    //customer: customerReducer
   })
 
 const store = configureStore( {

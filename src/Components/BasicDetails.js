@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { basicDetailsAction } from "../actions";
+//import { basicDetailsAction } from "../actions";
+import { addBasicDetails } from "../slices/loanApplicationSlice";
 import { useNavigate } from "react-router";
 const isValid = (formData) => {
     return formData.firstName !== '' && formData.lastName !== '' && formData.dob !== '' && formData.last4ssn !== '';
 }
 function BasicDetails() {
-    const { firstName, lastName, dob, last4ssn } = useSelector(state => state.basicDetails);
+    const { firstName, lastName, dob, last4ssn } = useSelector(state => state.loan?.currentLoan?.basicDetails);
     const [formData, setFormData] = useState({ firstName: firstName, lastName: lastName, dob: dob, last4ssn: last4ssn });
     const [valid, setValid] = useState(isValid(formData));
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function BasicDetails() {
     const handleSubmit = event => {
         event.preventDefault();
         console.log(formData);
-        dispatch(basicDetailsAction(formData));
+        dispatch(addBasicDetails(formData));
         navigate('/contact');
 
     }
@@ -70,7 +71,7 @@ function BasicDetails() {
                     />
                 </div>
                 <br />
-                <button type="submit" disabled={!valid}>Continue</button>
+                <button type="submit" name="continue" disabled={!valid}>Continue</button>
             </form>
         </div>
     )

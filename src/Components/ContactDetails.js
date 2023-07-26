@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { contactDetailsAction } from "../actions";
+//import { contactDetailsAction } from "../actions";
 import { useNavigate } from "react-router";
-
+import { addContactDetails } from "../slices/loanApplicationSlice";
 function ContactDetails() {
-    const {address,phone,email} = useSelector(state => state.contactDetails);
+    const {address,phone,email} = useSelector(state => state.loan.currentLoan.contactDetails);
     const [formData, setFormData] = useState({email: email ,phone: phone, address: address});    
     const [isSubmitDisabled, setIsSubmitDisabled] = useState(false)
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function ContactDetails() {
     const handleSubmit = event => {
         event.preventDefault()
         console.log(formData);
-        dispatch(contactDetailsAction(formData));
+        dispatch(addContactDetails(formData));
         navigate('/review');        
     }
     const navigateToPrevious = () => {
@@ -62,8 +62,8 @@ function ContactDetails() {
             />
             </div>
             <br/>                        
-            <button type="button" onClick={navigateToPrevious}>Previous</button>
-            <button type="submit" disabled={isSubmitDisabled}>Continue</button>
+            <button type="button" name="previous" onClick={navigateToPrevious}>Previous</button>
+            <button type="submit" name="continue" disabled={isSubmitDisabled}>Continue</button>
         </form>
         </div>
     )
